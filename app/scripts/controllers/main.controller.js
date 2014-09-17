@@ -5,6 +5,8 @@
     $scope.data = [];
     $scope.currentPage = 0;
     $scope.pageSize = 10;
+    $scope.orderByField = 'last_name';
+    $scope.reverseSort = false;
 
     function init(){
       DataService.getSeedData()

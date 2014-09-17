@@ -2,13 +2,27 @@
   <div class="row">
     <table class="table table-striped">
       <thead class="user-list-header">
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Created on</th>
-        <th>Last edited</th>
-        <th>Active</th>
+        <th>
+          <a href="" data-ng-click="orderByField='last_name'; reverseSort = !reverseSort">Last Name<span class="sort-icon" data-ng-show="orderByField == 'last_name'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
+        <th>
+          <a href="" data-ng-click="orderByField='first_name'; reverseSort = !reverseSort">First Name<span class="sort-icon" data-ng-show="orderByField == 'first_name'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
+        <th>
+          <a href="" data-ng-click="orderByField='age'; reverseSort = !reverseSort">Age<span class="sort-icon" data-ng-show="orderByField == 'age'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
+        <th>
+          <a href="" data-ng-click="orderByField='email'; reverseSort = !reverseSort">Email<span class="sort-icon" data-ng-show="orderByField == 'email'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
+        <th>
+          <a href="" data-ng-click="orderByField='created_on'; reverseSort = !reverseSort">Created<span class="sort-icon" data-ng-show="orderByField == 'created_on'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
+        <th>
+          <a href="" data-ng-click="orderByField='last_edited'; reverseSort = !reverseSort">Updated<span class="sort-icon" data-ng-show="orderByField == 'last_edited'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
+        <th>
+          <a href="" data-ng-click="orderByField='active'; reverseSort = !reverseSort">Active<span class="sort-icon" data-ng-show="orderByField == 'active'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
+        </th>
       </thead>
       <tbody data-ng-include src="'views/partials/user_list.html'"></tbody>
     </table>

@@ -1,4 +1,4 @@
-<tr class="user-list-item" data-ng-repeat="user in data | startFrom:currentPage * pageSize | limitTo:pageSize">
+<tr class="user-list-item" data-ng-repeat="user in data | orderBy:orderByField:reverseSort | startFrom:currentPage * pageSize | limitTo:pageSize">
   <td class="col-md-3">{{ user.last_name }}</td>
   <td class="col-md-2">{{ user.first_name }}</td>
   <td class="col-md-1">{{ user.age }}</td>

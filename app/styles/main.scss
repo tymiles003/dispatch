@@ -16,6 +16,19 @@ ul, li {
   color: #fff;
 }
 
+.user-list-header th {
+  border-right: 1px solid #fff;
+}
+
+.user-list-header a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.sort-icon {
+  float: right;
+}
+
 .table > tbody > tr {
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
