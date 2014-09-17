@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <thead class="user-list-header">
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Created on</th>
+        <th>Last edited</th>
+        <th>Active</th>
+      </thead>
+      <tbody data-ng-include src="'views/partials/user_list.html'"></tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <span data-ng-show="firstSequenceNum > 1"><a href="" data-ng-click="decrementPage()">< Previous {{ numPrior }} Users</a> | </span>
+    <span>Showing {{ firstSequenceNum + 1 }}-{{ lastSequenceNum }} of {{ data.length }} users</span>
+    <span data-ng-show="numNext > 0"> |
+    <a href="" data-ng-click="incrementPage()">Next {{ numNext }} Users ></a></span>
+  </div>
+</div>

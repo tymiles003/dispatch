@@ -1,0 +1,18 @@
+<tr class="user-list-item" data-ng-repeat="user in data | startFrom:currentPage * pageSize | limitTo:pageSize">
+  <td class="col-md-3">{{ user.last_name }}</td>
+  <td class="col-md-2">{{ user.first_name }}</td>
+  <td class="col-md-1">{{ user.age }}</td>
+  <td class="col-md-3">{{ user.email }}</td>
+  <td class="col-md-1">
+    <div class="datetime">{{ user.created_on | asDate | date:'MM/dd/yyyy' }}</div>
+    <div class="datetime">{{ user.created_on | asDate | date:'hh:mm:ss a' }}</div>
+  </td>
+  <td class="col-md-1">
+    <div class="datetime">{{ user.last_edited | asDate | date:'MM/dd/yyyy' }}</div>
+    <div class="datetime">{{ user.last_edited | asDate | date:'hh:mm:ss a' }}</div>
+  </td>
+  <td class="col-md-1">
+    <span class="user-item-active" ng-show="user.active"><i class="glyphicon glyphicon-ok green"></i></span>
+    <span class="user-item-edit"><a><i class="glyphicon glyphicon-pencil grey"></i></a></span>
+  </td>
+</tr>
