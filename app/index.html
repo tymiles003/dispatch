@@ -21,11 +21,11 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
-        <h3 class="text-muted">Dispatch Angular Test</h3>
+      <div class="row header">
+        <h3 class="text-muted">User List</h3>
       </div>
 
-      <div ng-view=""></div>
+      <div id="view" ng-view=""></div>
 
       <div class="footer">
       </div>
@@ -68,8 +68,11 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/filters/date.filter.js"></script>
         <script src="scripts/filters/start_from.filter.js"></script>
+        <script src="scripts/directives/unique.directive.js"></script>
+        <script src="scripts/directives/integer.directive.js"></script>
         <script src="scripts/services/data.service.js"></script>
         <script src="scripts/services/page.service.js"></script>
+        <script src="scripts/services/form.service.js"></script>
         <script src="scripts/controllers/main.controller.js"></script>
         <!-- endbuild -->
 </body>

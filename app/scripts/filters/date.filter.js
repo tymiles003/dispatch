@@ -4,7 +4,7 @@
   function asDate(){
     return function(raw) {
       if(raw === null) {
-        return '';
+        return new Date();
       }
       return new Date(raw);
     };
