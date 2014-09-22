@@ -1,0 +1,7 @@
+<span data-ng-show="firstSequenceNum > 1">
+  <a href="" data-ng-click="decrementPage()">&#x00AB Previous {{ numPrior }} Users</a> |
+</span>
+<span>Showing {{ firstSequenceNum + 1 }}-{{ lastSequenceNum }} of {{ data.length }} users</span>
+<span data-ng-show="numNext > 0"> |
+  <a href="" data-ng-click="incrementPage()">Next {{ numNext }} Users &#x00BB</a>
+</span>

@@ -3,43 +3,31 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+//---------- General styles ----------//
+
 html, body {
   font-size: 11px !important;
+}
+
+a {
+  color: #333;
+}
+
+a:hover {
+  color: CornflowerBlue;
+  text-decoration: none;
 }
 
 ul, li {
   list-style: none;
 }
 
-.user-list-header {
-  background-color: #000;
-  color: #fff;
+.error {
+  color: red;
 }
 
-.user-list-header th {
-  border-right: 1px solid #fff;
-}
-
-.user-list-header a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.sort-icon {
+.right {
   float: right;
-}
-
-.table > tbody > tr {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-}
-
-.table > tbody > tr > td {
-  border-bottom: 1px solid #ddd !important;
-  border-top: none !important;
-}
-.user-item-edit {
-  float:right;
 }
 
 .datetime {
@@ -50,6 +38,203 @@ ul, li {
   color: green;
 }
 
-a .grey {
-  color: grey;
+.white {
+  color: #fff;
+}
+
+.mb {
+  margin-bottom: 15px;
+}
+
+.mt {
+  margin-top: 20px;
+}
+
+//---------- Layout ----------//
+
+.header {
+  margin: 0 -30px;
+}
+
+#view {
+  margin: 0 -15px;
+}
+
+//---------- Header ----------//
+
+.list-header {
+  background-color: #000;
+  color: #fff;
+}
+
+.list-header div {
+  border-left: 1px solid #fff;
+  padding: 5px;
+}
+
+.list-header div:first-child {
+  border-left: none;
+}
+
+.list-header div a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.list-header div a:hover {
+  color: CornflowerBlue;
+}
+
+.sort-icon {
+  float: right;
+}
+
+//---------- Form ----------//
+
+input[type=text], input[type=email] {
+  margin: 0;
+  padding: 2px;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {font-style: italic;}
+:-moz-placeholder {font-style: italic;}
+::-moz-placeholder {font-style: italic;}
+::-ms-input-placeholder {font-style: italic;}
+
+.form-item {
+  padding: 5px 10px 5px 5px;
+}
+
+.form-item-active {
+  padding-right: 5px;
+  position: relative;
+}
+
+.user-form-add {
+  position: absolute;
+  right: 0;
+  top: -60px;
+}
+
+.user-form-edit {
+  float: right;
+  margin-top: 3px;
+}
+
+.user-add-btn {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.user-reset-btn, .user-update-btn {
+  border: none;
+  color: #fff;
+  height: 14px;
+  padding: 0;
+  margin: 0;
+  width: 14px;
+}
+
+.user-reset-btn {
+  background-color: red;
+}
+
+.user-update-btn {
+  background-color: green;
+}
+
+.checkbox {
+  height: 10px;
+  float: left;
+  margin: 0 5px 0 0;
+  padding: 0;
+  position: relative;
+  width: 10px;
+}
+
+.checkbox label {
+  background: #eee;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  height: 10px;
+  left: 0;
+  margin: 0 4px 0 0 !important;
+  padding: 0 !important;
+  position: absolute;
+  top: 5px;
+  width: 10px;
+}
+
+.checkbox label:after {
+  background: transparent;
+  border: 3px solid #333;
+  border-right: none;
+  border-top: none;
+  content: '';
+  height: 5px;
+  left: 2px;
+  margin: 0 4px 0 0 !important;
+  opacity: 0.2;
+  padding: 0 !important;
+  position: absolute;
+  top: 0;
+  width: 9px;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.checkbox label:hover:after {
+  opacity: 0.5;
+}
+
+.checkbox input[type=checkbox] {
+  left: 0;
+  margin: 0 4px 0 0 !important;
+  padding: 0 !important;
+  top: 5px;
+}
+
+.checkbox input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+
+//---------- Body ----------//
+
+.user-form, .user-list {
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.even {
+  background: #fff;
+}
+
+.odd {
+  background: rgb(248, 248, 248);
+}
+
+.list-item {
+  padding: 5px;
+}
+
+.list-item-active {
+  float: left;
+  height: 14px;
+  margin-left: 3px;
+  padding: 1px;
+  width: 14px;
+}
+
+.list-item-edit {
+  background-color: grey;
+  float: right;
+  height: 15px;
+  padding: 1px;
+  width: 14px;
 }

@@ -1,37 +1,165 @@
-<div class="container">
-  <div class="row">
-    <table class="table table-striped">
-      <thead class="user-list-header">
-        <th>
-          <a href="" data-ng-click="orderByField='last_name'; reverseSort = !reverseSort">Last Name<span class="sort-icon" data-ng-show="orderByField == 'last_name'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-        <th>
-          <a href="" data-ng-click="orderByField='first_name'; reverseSort = !reverseSort">First Name<span class="sort-icon" data-ng-show="orderByField == 'first_name'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-        <th>
-          <a href="" data-ng-click="orderByField='age'; reverseSort = !reverseSort">Age<span class="sort-icon" data-ng-show="orderByField == 'age'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-        <th>
-          <a href="" data-ng-click="orderByField='email'; reverseSort = !reverseSort">Email<span class="sort-icon" data-ng-show="orderByField == 'email'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-        <th>
-          <a href="" data-ng-click="orderByField='created_on'; reverseSort = !reverseSort">Created<span class="sort-icon" data-ng-show="orderByField == 'created_on'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-        <th>
-          <a href="" data-ng-click="orderByField='last_edited'; reverseSort = !reverseSort">Updated<span class="sort-icon" data-ng-show="orderByField == 'last_edited'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-        <th>
-          <a href="" data-ng-click="orderByField='active'; reverseSort = !reverseSort">Active<span class="sort-icon" data-ng-show="orderByField == 'active'"><span data-ng-show="!reverseSort">&#x25BC</span><span data-ng-show="reverseSort">&#x25B2</span></span></a>
-        </th>
-      </thead>
-      <tbody data-ng-include src="'views/partials/user_list.html'"></tbody>
-    </table>
+<div class="row mb" data-ng-include="'views/partials/user_breadcrumb.html'"></div>
+
+<div class="row list-header">
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <a href="" data-ng-click="orderByField='lastName'; reverseSort = !reverseSort">
+      <span>Last Name</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'lastName'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
   </div>
 
-  <div class="row">
-    <span data-ng-show="firstSequenceNum > 1"><a href="" data-ng-click="decrementPage()">< Previous {{ numPrior }} Users</a> | </span>
-    <span>Showing {{ firstSequenceNum + 1 }}-{{ lastSequenceNum }} of {{ data.length }} users</span>
-    <span data-ng-show="numNext > 0"> |
-    <a href="" data-ng-click="incrementPage()">Next {{ numNext }} Users ></a></span>
+  <div class="col-lg-2 col-md-2 col-xs-2">
+    <a href="" data-ng-click="orderByField='firstName'; reverseSort = !reverseSort">
+      <span>First Name</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'firstName'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="col-lg-1 col-md-1 col-xs-1">
+    <a href="" data-ng-click="orderByField='age'; reverseSort = !reverseSort">
+      <span>Age</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'age'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-xs-3">
+    <a href="" data-ng-click="orderByField='email'; reverseSort = !reverseSort">
+      <span>Email</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'email'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="col-lg-1 col-md-1 col-xs-1">
+    <a href="" data-ng-click="orderByField='createdOn'; reverseSort = !reverseSort">
+      <span>Created</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'createdOn'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="col-lg-1 col-md-1 col-xs-1">
+    <a href="" data-ng-click="orderByField='lastEdited'; reverseSort = !reverseSort">
+      <span>Updated</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'lastEdited'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
+  </div>
+
+  <div class="col-lg-1 col-md-1 col-xs-1">
+    <a href="" data-ng-click="orderByField='active'; reverseSort = !reverseSort">
+      <span>Active</span>
+      <span class="sort-icon" data-ng-show="orderByField == 'active'">
+        <span data-ng-show="!reverseSort">&#x25BC</span>
+        <span data-ng-show="reverseSort">&#x25B2</span>
+      </span>
+    </a>
   </div>
 </div>
+
+<div class="row user-form">
+  <form name="userForm" data-ng-submit="save()" novalidate>
+    <div class="col-lg-3 col-md-3 col-xs-3 form-item">
+      <input type="text" name="lastName" data-ng-model="user.lastName" placeholder="Enter a last name" required>
+      <div class="error" data-ng-show="userForm.lastName.$dirty && userForm.lastName.$error.required">Required.</div>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-xs-2 form-item">
+      <input type="text" name="firstName" data-ng-model="user.firstName" placeholder="Enter a first name" required>
+      <div class="error" data-ng-show="userForm.firstName.$dirty && userForm.firstName.$error.required">Required.</div>
+    </div>
+
+    <div class="col-lg-1 col-md-1 col-xs-1 form-item">
+      <input type="text" name="age" size="3" data-ng-model="user.age" placeholder="Age" integer>
+      <div class="error" data-ng-show="userForm.age.$dirty && userForm.age.$error.integer">Not an integer.</div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-xs-3 form-item">
+      <input type="email" name="email" data-ng-model="user.email" data-ng-model-options="{ updateOn: 'blur' }" placeholder="email@yourdomain.com" required unique-email="user.email">
+      <div class="error" data-ng-show="userForm.email.$dirty && userForm.email.$invalid">
+        <div data-ng-show="userForm.email.$error.required">Required.</div>
+        <div data-ng-show="userForm.email.$error.email">Not a valid email.</div>
+        <div data-ng-show="userForm.email.$error.unique">Not a unique email.</div>
+      </div>
+    </div>
+
+    <div class="col-lg-1 col-md-1 col-xs-1 form-item"></div>
+    <div class="col-lg-1 col-md-1 col-xs-1 form-item"></div>
+
+    <div class="col-lg-1 col-md-1 col-xs-1 form-item form-item-active">
+      <input type="hidden" name="id" data-ng-model="user.id">
+      <div class="checkbox">
+        <input type="checkbox" id="user-checkbox" name="active" data-ng-model="user.active">
+        <label for="user-checkbox"></label>
+      </div>
+
+      <div class="user-form-add">
+        <button type="submit" class="user-add-btn" data-ng-disabled="userForm.$pristine || userForm.$invalid">
+          <i class="glyphicon glyphicon-plus green"></i>
+          <span> Add User</span>
+        </button>
+      </div>
+
+      <div class="user-form-edit">
+        <span class="">
+          <button type="button" class="user-reset-btn" data-ng-click="reset()">
+            <i class="glyphicon glyphicon-share-alt"></i>
+          </button>
+        </span>
+        <span class="">
+          <button type="button" class="user-update-btn" data-ng-click="update()" data-ng-disabled="userForm.$pristine || user.id === null || isUnchanged(user) || userForm.$invalid">
+            <i class="glyphicon glyphicon-ok"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div data-ng-repeat="item in data | orderBy:orderByField:reverseSort | startFrom:currentPage * pageSize | limitTo:pageSize">
+  <div class="row user-list" data-ng-class-odd="'odd'" data-ng-class-even="'even'">
+    <div class="col-lg-3 col-md-3 col-xs-3 list-item">{{ item.lastName }}</div>
+    <div class="col-lg-2 col-md-2 col-xs-2 list-item">{{ item.firstName }}</div>
+    <div class="col-lg-1 col-md-1 col-xs-1 list-item">{{ item.age }}</div>
+    <div class="col-lg-3 col-md-3 col-xs-3 list-item">{{ item.email }}</div>
+
+    <div class="col-lg-1 col-md-1 col-xs-1 list-item">
+      <div class="datetime">{{ item.createdOn | asDate | date:'MM/dd/yyyy' }}</div>
+      <div class="datetime">{{ item.createdOn | asDate | date:'hh:mm:ss a' }}</div>
+    </div>
+
+    <div class="col-lg-1 col-md-1 col-xs-1 list-item">
+      <div class="datetime">{{ item.lastEdited | asDate | date:'MM/dd/yyyy' }}</div>
+      <div class="datetime">{{ item.lastEdited | asDate | date:'hh:mm:ss a' }}</div>
+    </div>
+
+    <div class="col-lg-1 col-md-1 col-xs-1 list-item">
+      <div class="list-item-active" data-ng-show="item.active">
+        <i class="glyphicon glyphicon-ok green"></i>
+      </div>
+
+      <div class="list-item-edit">
+        <a href="" data-ng-model="item" data-ng-click="edit(item)">
+          <i class="glyphicon glyphicon-pencil white"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt" data-ng-include="'views/partials/user_breadcrumb.html'"></div>
