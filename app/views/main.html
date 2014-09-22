@@ -1,4 +1,17 @@
-<div class="row mb" data-ng-include="'views/partials/user_breadcrumb.html'"></div>
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-xs-4 filter-container">
+    <form name="filterForm" data-ng-submit="filter()" novalidate>
+      <div class="filter-btn-container">
+        <button type="submit" class="filter-btn">
+          <i class="glyphicon glyphicon-search white"></i>
+        </button>
+      </div>
+      <input type="text" name="filter" class="filter-input" data-ng-model="filter.query" placeholder="Filter">
+    </form>
+  </div>
+</div>
+
+<div class="row mt mb" data-ng-include="'views/partials/user_breadcrumb.html'"></div>
 
 <div class="row list-header">
   <div class="col-lg-3 col-md-3 col-xs-3">
@@ -131,7 +144,7 @@
   </form>
 </div>
 
-<div data-ng-repeat="item in data | orderBy:orderByField:reverseSort | startFrom:currentPage * pageSize | limitTo:pageSize">
+<div data-ng-repeat="item in resultSet | orderBy:orderByField:reverseSort | startFrom:currentPage * pageSize | limitTo:pageSize">
   <div class="row user-list" data-ng-class-odd="'odd'" data-ng-class-even="'even'">
     <div class="col-lg-3 col-md-3 col-xs-3 list-item">{{ item.lastName }}</div>
     <div class="col-lg-2 col-md-2 col-xs-2 list-item">{{ item.firstName }}</div>

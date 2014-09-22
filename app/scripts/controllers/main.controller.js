@@ -1,8 +1,9 @@
 (function(){
   'use strict';
 
-  function mainController($scope, DataService, PageService, FormService){
+  function mainController($scope, DataService, PageService, FormService, FilterService){
     $scope.data = [];
+    $scope.resultSet = [];
     $scope.currentPage = 0;
     $scope.pageSize = 10;
     $scope.orderByField = 'lastName';
@@ -12,13 +13,14 @@
       DataService.getSeedData()
       .then(function(result){
         $scope.data = result;
+        $scope.resultSet = result;
         $scope.firstSequenceNum = 0;
         $scope.lastSequenceNum = PageService.lastSequenceNum($scope);
         $scope.numNext = PageService.numNext($scope);
         $scope.numPrior = PageService.numPrior($scope);
       });
       FormService.reset($scope);
-    }
+    };
 
     $scope.test = function(){
       console.log($scope.userForm.lastName);
@@ -49,6 +51,10 @@
       return $scope.mode === 'read';
     };
 
+    $scope.filter = function(){
+      FilterService.filter($scope);
+    };
+
     $scope.decrementPage = function(){
       PageService.decrementPage($scope);
     };
@@ -65,7 +71,7 @@
     init();
   }
 
-  mainController.$inject = ['$scope', 'DataService', 'PageService', 'FormService'];
+  mainController.$inject = ['$scope', 'DataService', 'PageService', 'FormService', 'FilterService'];
 
   angular
   .module('dispatchApp')

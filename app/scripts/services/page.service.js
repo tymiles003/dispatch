@@ -4,7 +4,7 @@
   function pageService(){
 
     function numPages(scope){
-      return Math.ceil(scope.data.length / scope.pageSize);
+      return Math.ceil(scope.resultSet.length / scope.pageSize);
     }
 
     function incrementPage(scope){
@@ -28,11 +28,11 @@
     }
 
     function lastSequenceNum(scope){
-      return (scope.currentPage + 1) * scope.pageSize > scope.data.length ? scope.data.length : (scope.currentPage + 1) * scope.pageSize;
+      return (scope.currentPage + 1) * scope.pageSize > scope.resultSet.length ? scope.resultSet.length : (scope.currentPage + 1) * scope.pageSize;
     }
 
     function numNext(scope){
-      return scope.currentPage + 1 < (numPages(scope) - 1) ? scope.pageSize : scope.data.length - scope.lastSequenceNum;
+      return scope.currentPage + 1 < (numPages(scope) - 1) ? scope.pageSize : scope.resultSet.length - scope.lastSequenceNum;
     }
 
     function numPrior(scope) {

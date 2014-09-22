@@ -21,7 +21,7 @@
     }
 
     function save(scope){
-      scope.data.unshift({
+      var user = {
         id: scope.data.length,
         lastName: scope.user.lastName,
         firstName: scope.user.firstName,
@@ -30,7 +30,9 @@
         createdOn: new Date(),
         lastEdited: new Date(),
         active: scope.user.active
-      });
+      };
+      scope.data.unshift(user);
+      scope.resultSet.unshift(user);
       reset(scope);
     }
 
@@ -50,6 +52,16 @@
 
     function update(scope){
       scope.data.forEach(function(elem){
+        if(elem.id === scope.user.id) {
+          elem.lastName = scope.user.lastName;
+          elem.firstName = scope.user.firstName;
+          elem.age = scope.user.age;
+          elem.email = scope.user.email;
+          elem.lastEdited = new Date();
+          elem.active = scope.user.active;
+        }
+      });
+      scope.resultSet.forEach(function(elem){
         if(elem.id === scope.user.id) {
           elem.lastName = scope.user.lastName;
           elem.firstName = scope.user.firstName;
