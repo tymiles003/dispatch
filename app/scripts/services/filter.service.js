@@ -17,13 +17,6 @@
       return dateStr;
     };
 
-    function setPagination(scope) {
-        scope.firstSequenceNum = 0;
-        scope.lastSequenceNum = PageService.lastSequenceNum(scope);
-        scope.numNext = PageService.numNext(scope);
-        scope.numPrior = PageService.numPrior(scope);
-    }
-
     function filter(scope){
       if(scope.filter.query && scope.filter.query.length > 0) {
         var q = scope.filter.query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
@@ -44,7 +37,7 @@
       } else {
         scope.resultSet = scope.data;
       }
-      setPagination(scope);
+      PageService.updatePageStats(scope);
     }
 
     return {

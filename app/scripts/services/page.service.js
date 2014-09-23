@@ -7,45 +7,45 @@
       return Math.ceil(scope.resultSet.length / scope.pageSize);
     }
 
+    function getSequenceStart(scope){
+      return (scope.currentPage - 1) * scope.pageSize + 1;
+    }
+
+    function getSequenceEnd(scope){
+      return (scope.currentPage * scope.pageSize) > scope.resultSet.length ? scope.resultSet.length : (scope.currentPage * scope.pageSize);
+    }
+
+    function getNextQty(scope){
+      return (scope.currentPage + 1) < numPages(scope) ? scope.pageSize : scope.resultSet.length % scope.pageSize;
+    }
+
+    function getPreviousQty(scope) {
+      return scope.currentPage === 1 ? 0 : scope.pageSize;
+    }
+
+    //---------- Public functions ----------//
+
+    function updatePageStats(scope){
+      scope.sequenceStart = getSequenceStart(scope);
+      scope.sequenceEnd = getSequenceEnd(scope);
+      scope.nextQty = getNextQty(scope);
+      scope.previousQty = getPreviousQty(scope);
+    }
+
     function incrementPage(scope){
       scope.currentPage = scope.currentPage + 1;
-      scope.firstSequenceNum = firstSequenceNum(scope);
-      scope.lastSequenceNum = lastSequenceNum(scope);
-      scope.numPrior = numPrior(scope);
-      scope.numNext = numNext(scope);
+      updatePageStats(scope);
     }
 
     function decrementPage(scope){
       scope.currentPage = scope.currentPage - 1;
-      scope.firstSequenceNum = firstSequenceNum(scope);
-      scope.lastSequenceNum = lastSequenceNum(scope);
-      scope.numPrior = numPrior(scope);
-      scope.numNext = numNext(scope);
-    }
-
-    function firstSequenceNum(scope){
-      return scope.currentPage * scope.pageSize <= 0 ? 0 : scope.currentPage * scope.pageSize;
-    }
-
-    function lastSequenceNum(scope){
-      return (scope.currentPage + 1) * scope.pageSize > scope.resultSet.length ? scope.resultSet.length : (scope.currentPage + 1) * scope.pageSize;
-    }
-
-    function numNext(scope){
-      return scope.currentPage + 1 < (numPages(scope) - 1) ? scope.pageSize : scope.resultSet.length - scope.lastSequenceNum;
-    }
-
-    function numPrior(scope) {
-      return scope.currentPage >= 1 ? scope.pageSize : scope.firstSequenceNum - 1;
+      updatePageStats(scope);
     }
 
     return {
+      updatePageStats : updatePageStats,
       incrementPage : incrementPage,
-      decrementPage : decrementPage,
-      firstSequenceNum : firstSequenceNum,
-      lastSequenceNum : lastSequenceNum,
-      numNext : numNext,
-      numPrior : numPrior
+      decrementPage : decrementPage
     };
   }
 

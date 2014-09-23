@@ -22,7 +22,7 @@
 
     function save(scope){
       var user = {
-        id: scope.data.length,
+        id: scope.data.length + 1,
         lastName: scope.user.lastName,
         firstName: scope.user.firstName,
         age: scope.user.age,
@@ -31,8 +31,8 @@
         lastEdited: new Date(),
         active: scope.user.active
       };
-      scope.data.unshift(user);
-      scope.resultSet.unshift(user);
+      scope.data.push(user);
+      scope.resultSet.push(user);
       reset(scope);
     }
 

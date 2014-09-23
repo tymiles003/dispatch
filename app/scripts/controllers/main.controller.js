@@ -4,56 +4,82 @@
   function mainController($scope, DataService, PageService, FormService, FilterService){
     $scope.data = [];
     $scope.resultSet = [];
-    $scope.currentPage = 0;
+
+    $scope.currentPage = 1;
     $scope.pageSize = 10;
+    $scope.sequenceStart = 0;
+    $scope.sequenceEnd = 0;
+    $scope.nextQty = 0;
+    $scope.previousQty = 0;
+
     $scope.orderByField = 'lastName';
     $scope.reverseSort = false;
+
+    //---------- Initialization ----------//
 
     function init(){
       DataService.getSeedData()
       .then(function(result){
-        $scope.data = result;
-        $scope.resultSet = result;
-        $scope.firstSequenceNum = 0;
-        $scope.lastSequenceNum = PageService.lastSequenceNum($scope);
-        $scope.numNext = PageService.numNext($scope);
-        $scope.numPrior = PageService.numPrior($scope);
+        result.forEach(function(e){
+          $scope.data.push(e);
+          $scope.resultSet.push(e);
+        });
+        PageService.updatePageStats($scope);
       });
       FormService.reset($scope);
-    };
+    }
+    init();
 
-    $scope.test = function(){
-      console.log($scope.userForm.lastName);
-    };
+    //---------- Data manipulation ----------//
 
     $scope.reset = function(){
       FormService.reset($scope);
     };
 
-    $scope.save = function(){
-      console.log('save called');
-      FormService.save($scope);
+    $scope.create = function(){
+      if($scope.mode === 'create') {
+        FormService.reset($scope);
+      } else if($scope.mode !== 'edit') {
+        $scope.mode = 'create';
+      }
     };
 
     $scope.edit = function(user){
       FormService.edit(user, $scope);
     };
 
-    $scope.update = function(){
-      FormService.update($scope);
-    };
-
-    $scope.isUnchanged = function(user){
-      return FormService.isUnchanged(user, $scope);
-    };
-
-    $scope.isReadMode = function(){
-      return $scope.mode === 'read';
+    $scope.saveOrUpdate = function() {
+      if(typeof $scope.user.id === 'number') {
+        FormService.update($scope);
+      } else {
+        FormService.save($scope);
+        PageService.updatePageStats($scope);
+      }
     };
 
     $scope.filter = function(){
       FilterService.filter($scope);
     };
+
+    //---------- State tests ----------//
+
+    $scope.isUnchanged = function(user){
+      return FormService.isUnchanged(user, $scope);
+    };
+
+    $scope.isCreateMode = function(){
+      return $scope.mode === 'create' ? true : false;
+    };
+
+    $scope.isEditMode = function(){
+      return $scope.mode === 'edit' ? true : false;
+    };
+
+    $scope.isReadMode = function(){
+      return $scope.mode === 'read' ? true : false;
+    };
+
+    //---------- Navigation ----------//
 
     $scope.decrementPage = function(){
       PageService.decrementPage($scope);
@@ -62,13 +88,6 @@
     $scope.incrementPage = function(){
       PageService.incrementPage($scope);
     };
-
-    $scope.firstSequenceNum = PageService.firstSequenceNum($scope);
-    $scope.lastSequenceNum = PageService.lastSequenceNum($scope);
-    $scope.numNext = PageService.numNext($scope);
-    $scope.numPrior = PageService.numPrior($scope);
-
-    init();
   }
 
   mainController.$inject = ['$scope', 'DataService', 'PageService', 'FormService', 'FilterService'];

@@ -3,8 +3,7 @@
 
   function startFrom(){
     return function(input, start){
-      start = parseInt(start);
-      return input.slice(start);
+      return input.slice(parseInt(start));
     };
   }
 

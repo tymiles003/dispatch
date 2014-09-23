@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-lg-4 col-md-4 col-xs-4 filter-container">
-    <form name="filterForm" data-ng-submit="filter()" novalidate>
+    <form name="filterForm" novalidate>
       <div class="filter-btn-container">
-        <button type="submit" class="filter-btn">
+        <button type="button" class="filter-btn" data-ng-click="filter()">
           <i class="glyphicon glyphicon-search white"></i>
         </button>
       </div>
@@ -11,7 +11,23 @@
   </div>
 </div>
 
-<div class="row mt mb" data-ng-include="'views/partials/user_breadcrumb.html'"></div>
+<div class="row mt mb">
+  <div class="pagination-container">
+    <span data-ng-show="previousQty > 0">
+      <a href="" data-ng-click="decrementPage()">&#x00AB Previous {{ previousQty }} Users</a> |
+    </span>
+    <span>Showing {{ sequenceStart }}-{{ sequenceEnd }} of {{ resultSet.length }} users</span>
+    <span data-ng-show="nextQty > 0"> |
+      <a href="" data-ng-click="incrementPage()">Next {{ nextQty }} Users &#x00BB</a>
+    </span>
+  </div>
+  <div class="add-user-container">
+    <button type="submit" class="user-add-btn" data-ng-click="create()" data-ng-disabled="isEditMode()">
+      <i class="glyphicon glyphicon-plus green"></i>
+      <span> Add User</span>
+    </button>
+  </div>
+</div>
 
 <div class="row list-header">
   <div class="col-lg-3 col-md-3 col-xs-3">
@@ -85,8 +101,8 @@
   </div>
 </div>
 
-<div class="row user-form">
-  <form name="userForm" data-ng-submit="save()" novalidate>
+<div class="row user-form" data-ng-hide="isReadMode()">
+  <form name="userForm" data-ng-submit="saveOrUpdate()" novalidate>
     <div class="col-lg-3 col-md-3 col-xs-3 form-item">
       <input type="text" name="lastName" data-ng-model="user.lastName" placeholder="Enter a last name" required>
       <div class="error" data-ng-show="userForm.lastName.$dirty && userForm.lastName.$error.required">Required.</div>
@@ -121,13 +137,6 @@
         <label for="user-checkbox"></label>
       </div>
 
-      <div class="user-form-add">
-        <button type="submit" class="user-add-btn" data-ng-disabled="userForm.$pristine || userForm.$invalid">
-          <i class="glyphicon glyphicon-plus green"></i>
-          <span> Add User</span>
-        </button>
-      </div>
-
       <div class="user-form-edit">
         <span class="">
           <button type="button" class="user-reset-btn" data-ng-click="reset()">
@@ -135,7 +144,7 @@
           </button>
         </span>
         <span class="">
-          <button type="button" class="user-update-btn" data-ng-click="update()" data-ng-disabled="userForm.$pristine || user.id === null || isUnchanged(user) || userForm.$invalid">
+          <button type="submit" class="user-update-btn" data-ng-disabled="">
             <i class="glyphicon glyphicon-ok"></i>
           </button>
         </span>
@@ -144,7 +153,7 @@
   </form>
 </div>
 
-<div data-ng-repeat="item in resultSet | orderBy:orderByField:reverseSort | startFrom:currentPage * pageSize | limitTo:pageSize">
+<div data-ng-repeat="item in resultSet | orderBy:orderByField:reverseSort | startFrom:sequenceStart - 1 | limitTo:pageSize">
   <div class="row user-list" data-ng-class-odd="'odd'" data-ng-class-even="'even'">
     <div class="col-lg-3 col-md-3 col-xs-3 list-item">{{ item.lastName }}</div>
     <div class="col-lg-2 col-md-2 col-xs-2 list-item">{{ item.firstName }}</div>
@@ -167,12 +176,10 @@
       </div>
 
       <div class="list-item-edit">
-        <a href="" data-ng-model="item" data-ng-click="edit(item)">
+        <a href="" data-ng-model="item" data-ng-click="edit(item)" data-ng-disabled="!isReadMode()">
           <i class="glyphicon glyphicon-pencil white"></i>
         </a>
       </div>
     </div>
   </div>
 </div>
-
-<div class="row mt" data-ng-include="'views/partials/user_breadcrumb.html'"></div>
